@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0"
+          xmlns:form="http://www.springframework.org/tags/form">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <jsp:output doctype-root-element="html" doctype-system="about:legacy-compat" omit-xml-declaration="true"/>
+
+    <html>
+    <head>
+        <title>Success!</title>
+    </head>
+    <body>
+    Бронь принята!<br/>
+    Номер брони: <strong>${id}</strong><br/><br/>
+    <a href="/">На главную</a>
+
+    </body>
+    </html>
+</jsp:root>

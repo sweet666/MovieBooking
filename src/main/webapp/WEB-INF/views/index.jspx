@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0"
+          xmlns:form="http://www.springframework.org/tags/form">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <jsp:output doctype-root-element="html" doctype-system="about:legacy-compat" omit-xml-declaration="true"/>
+
+    <html>
+    <head>
+        <title>Система бронирования</title>
+    </head>
+    <body>
+    <h3>${movie.name}</h3>
+    <table class="data">
+        <tr>
+            <th>Сеанс</th>
+            <th>   </th>
+        </tr>
+        <c:forEach items="${movie.sessions}" var="String">
+            <tr>
+                <td>${String}</td>
+                <td><a href="session/${String}">Забронировать</a></td>
+            </tr>
+        </c:forEach>
+    </table>
+    <br/><br/>
+
+    Уже забронировали?
+    <form method="GET" action="check">
+        <label>
+            <input type="text" size="20" name="bookingId" placeholder="ID брони"><jsp:text/></input>
+        </label>
+        <button type="submit">Проверить</button>
+    </form>
+
+    </body>
+    </html>
+</jsp:root>

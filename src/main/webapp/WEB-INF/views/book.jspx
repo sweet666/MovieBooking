@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0"
+          xmlns:form="http://www.springframework.org/tags/form">
+
+    <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
+    <jsp:output doctype-root-element="html" doctype-system="about:legacy-compat" omit-xml-declaration="true"/>
+
+    <html>
+    <head>
+        <title>Сеанс ${time}</title>
+    </head>
+    <body>
+        Выберите место:
+        <form method="GET" action="book/${time}">
+            <label>
+                <input type="text" name="place" size="5"><jsp:text/></input>
+            </label>
+            <button type="submit">Забронировать</button>
+        </form>
+        * Вместимость зала составляет 100 мест
+    </body>
+    </html>
+</jsp:root>
