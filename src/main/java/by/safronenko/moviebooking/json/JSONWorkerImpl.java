@@ -158,4 +158,44 @@ public class JSONWorkerImpl implements JSONWorker {
                     .log(Level.SEVERE, null, ex);
         }
     }
+
+    //Метод проверяет для конкретного сеанса, занято ли определенное место
+    public boolean checkPlace(String time, int place) {
+        JSONParser parser = new JSONParser();
+
+        int i =0;
+        try{
+            FileReader fileReader = new FileReader(BOOKINGFILE);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while(bufferedReader.readLine()!=null) {
+                i++;
+            }
+
+            Scanner sc;
+            sc = new Scanner(new File(BOOKINGFILE));
+            for (int j = 0; j < i; j++) {
+                String str = sc.next();
+                JSONObject object = (JSONObject) parser.parse(str);
+                String bootingTime = (String) object.get("time");
+                if (bootingTime.equals(time)){
+                    Long bookingPlace = (Long) object.get("place");
+                    if (place==Math.toIntExact(bookingPlace)){
+                        return false;//Возвращает false, если место на данном сеансе забронировано
+                    }
+                }
+            }
+
+            sc.close();
+            fileReader.close();
+            bufferedReader.close();
+
+        }catch(Exception ex){
+            Logger.getLogger(JSONWorkerImpl.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+
+        return true;
+    }
+
+
 }
