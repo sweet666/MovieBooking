@@ -15,4 +15,6 @@ public interface MovieService {
     Booking checkBooking(int bookingId);
 
     void deleteBooking(int bookingId);
+
+    boolean checkPlace (String time, int place);
 }
