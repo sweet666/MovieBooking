@@ -47,16 +47,22 @@ public class BookingController {
         if (place>100||place<1){
             return "redirect:/session/{time}";
         }
-        Booking booking = new Booking();
-        int id = (int) (Math.random()*1000);//Генерирует id для каждого бронирования
-        booking.setId(id);
-        booking.setTime(time);
-        booking.setPlace(place);
-        movieService.addBooking(booking);
+        //Проверка места на доступность
+        if (movieService.checkPlace(time, place)){
+            Booking booking = new Booking();
+            int id = (int) (Math.random()*1000);//Генерирует id для каждого бронирования
+            booking.setId(id);
+            booking.setTime(time);
+            booking.setPlace(place);
+            //Вносим новое бронирование в систему
+            movieService.addBooking(booking);
 
-        model.addAttribute("id", id);
-
-        return "success";
+            //Возвращаем пользователю представление с номером бронирования
+            model.addAttribute("id", id);
+            return "success";
+        }
+        //Если место занято
+        else return "taken";
     }
 
     //Возвращает представление с информацией о бронировании
