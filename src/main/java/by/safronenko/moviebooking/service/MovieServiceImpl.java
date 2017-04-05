@@ -37,4 +37,11 @@ public class MovieServiceImpl implements MovieService {
         jsonWorker.deleteBooking(bookingId);
     }
 
+    public boolean checkPlace(String time, int place) {
+        if (jsonWorker.checkPlace(time, place)){
+            return true;
+        }
+        else return false;
+    }
+
 }
