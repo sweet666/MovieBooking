@@ -17,4 +17,6 @@ public interface JSONWorker {
 
     void deleteBooking(int bookingId);
 
+    boolean checkPlace (String time, int place);
+
 }
